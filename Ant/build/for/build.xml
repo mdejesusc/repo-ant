@@ -1,0 +1,104 @@
+<project name="ant-for" default="run" basedir=".">
+<!--
+	<taskdef resource="net/sf/antcontrib/antlib.xml"/>
+	<target name="run">
+		<var name="index" value="1"/>
+		<for list="piyush,kumar" param="letter">
+		  <sequential>
+		    <property name="var${index}" value="@{letter}" />
+		    <math result="index" operand1="${index}" operation="+" operand2="1" datatype="int" />
+		  </sequential>
+		</for>
+
+		<echoproperties prefix="var" />
+		
+		<echo>${var1}</echo>
+		<echo>${var2}</echo>
+		
+	</target>
+-->
+
+	<taskdef resource="net/sf/antcontrib/antlib.xml"/>
+	
+	<target name="run" description="List Log4j applications and request create directory and log4j.properties file">
+		<loadfile property="serviceList" srcfile="log4jservices.txt"/>
+		<foreach list="${serviceList}" target="createLog4jProperties" param="var" delimiter="${line.separator}"/>
+	</target>
+	
+	<target name="createLog4jProperties" description="Create log4j property file for a specific service">
+		<!--loadproperties srcfile="local.properties"/-->
+		<var name="index" value="1"/>
+		<for list="${var}" param="service-info" delimiter="|">
+  			<sequential>
+  			    <property name="i${index}" value="@{service-info}" />
+  			    <math result="index" operand1="${index}" operation="+" operand2="1" datatype="int" />
+    			<!--echo>Param @{service-info}</echo-->
+			</sequential>
+		</for>
+		<echo>${i1}</echo>
+		<echo>${i2}</echo>
+		<echo>${i3}</echo>
+		<echo>${i4}</echo>
+		<echo>${i5}</echo>
+		<echo>${i6}</echo>
+		<echo>${i7}</echo>
+		<echo>${i8}</echo>
+		<echo>${i9}</echo>
+		<echo>${i10}</echo>
+		<echo>${i11}</echo>
+		<echo>${i12}</echo>
+		<if>
+			<isgreaterthan arg1="${i12}" arg2="0"/>
+			<then>
+				<echo>${i12}</echo>
+			</then>
+			<else>
+				<echo>5</echo>
+			</else>
+		</if>
+	</target>
+<!--
+	<target name="createLog4jProperties" description="Create log4j property file for a specific service">
+		<var name="index" value="1"/>
+		<for list="Service1|1|2|3|4|5|6|7|8|9|10" param="service-info" delimiter="|">
+  			<sequential>
+  			    <property name="var${index}" value="@{service-info}" />
+  			    <math result="index" operand1="${index}" operation="+" operand2="1" datatype="int" />
+			</sequential>
+		</for>
+		<echo>${var1}</echo>
+		<echo>${var2}</echo>
+		<echo>${var3}</echo>
+		<echo>${var4}</echo>
+		<echo>${var5}</echo>
+		<echo>${var6}</echo>
+		<echo>${var7}</echo>
+		<echo>${var8}</echo>
+		<echo>${var9}</echo>
+		<echo>${var10}</echo>
+		<echo>${var11}</echo>
+		<echo>${var12}</echo>
+		<if>
+			<isgreaterthan arg1="${var12}" arg2="0"/>
+			<then>
+				<echo>${var12}</echo>
+			</then>
+			<else>
+				<echo>5</echo>
+			</else>
+		</if>
+	</target>
+-->
+	<!--target name="target">
+	    <taskdef resource="net/sf/antcontrib/antlib.xml" classpath="${lib.dir}/ant-contrib.jar"></taskdef>
+	    <foreach target="setVar" param="var" list="a,b"/>
+	    <echo>myreturn in target: ${env.myreturn}</echo>
+	    <property name="env.myreturn" value="c"/>
+	    <echo>myreturn in second: ${env.myreturn}</echo>
+	</target>
+	<target name="setVar">
+	    <property name="env.myreturn" value="${var}"/>
+	    <echo>myreturn in setVar: ${env.myreturn}</echo>
+	</target-->
+	
+</project>

@@ -1,0 +1,8 @@
+<log4j-root>
+	<service-info>
+		<name max-file-size="1" max-backup-file="2">Service1</name>
+	</service-info>
+	<service-info>
+		<name max-file-size="1" max-backup-file="2">Service2</name>
+	</service-info>
+</log4j-root>

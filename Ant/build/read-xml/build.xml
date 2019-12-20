@@ -1,0 +1,44 @@
+<project 
+    name="ant-xmlproperty-with-multiple-matching-elements" 
+    default="run" 
+    basedir="." 
+    xmlns:ac="antlib:net.sf.antcontrib"
+    >
+    <taskdef resource="net/sf/antcontrib/antlib.xml" />
+    <target name="run">
+        <xmlproperty file="log4jservices.xml"/>
+
+        <ac:for list="${log4j-root.service-info.name(max-file-size)}" param="service">
+            <sequential>
+                <echo>@{service}</echo>
+            	<echo>@{service}(max-file-size)</echo>
+            </sequential>
+        </ac:for>
+    </target>
+</project>
+
+<!--project name="ant-xmlproperty-with-multiple-matching-elements" default="run" basedir=".">
+    <target name="run">
+        <xmlproperty file="example.xml" prefix="PREFIX" />
+
+        <echo>${PREFIX.main.tagList.tag.file}</echo>
+    </target>
+</project-->
+
+<!--project 
+    name="ant-xmlproperty-with-multiple-matching-elements" 
+    default="run" 
+    basedir="." 
+    xmlns:ac="antlib:net.sf.antcontrib"
+    >
+    <taskdef resource="net/sf/antcontrib/antlib.xml" />
+    <target name="run">
+        <xmlproperty file="example.xml" prefix="PREFIX" />
+
+        <ac:for list="${PREFIX.main.tagList.tag.file}" param="file">
+            <sequential>
+                <echo>@{file}</echo>
+            </sequential>
+        </ac:for>
+    </target>
+</project-->

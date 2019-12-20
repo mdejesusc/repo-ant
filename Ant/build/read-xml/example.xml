@@ -1,0 +1,12 @@
+<main>
+  <tagList>
+    <tag>
+      <file>file1</file>
+      <machine>machine1</machine>
+    </tag>
+    <tag>
+      <file>file2</file>
+      <machine>machine2</machine>
+    </tag>
+  </tagList>
+</main>
