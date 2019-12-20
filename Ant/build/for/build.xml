@@ -22,15 +22,15 @@
 	
 	<target name="run" description="List Log4j applications and request create directory and log4j.properties file">
 		<loadfile property="serviceList" srcfile="log4jservices.txt"/>
-		<foreach list="${serviceList}" target="createLog4jProperties" param="var" delimiter="${line.separator}"/>
+		<foreach list="${serviceList}" target="createLog4jProperties" param="line" delimiter="${line.separator}"/>
 	</target>
 	
 	<target name="createLog4jProperties" description="Create log4j property file for a specific service">
 		<!--loadproperties srcfile="local.properties"/-->
 		<var name="index" value="1"/>
-		<for list="${var}" param="service-info" delimiter="|">
+		<for list="${line}" param="item" delimiter="|">
   			<sequential>
-  			    <property name="i${index}" value="@{service-info}" />
+  			    <property name="i${index}" value="@{item}" />
   			    <math result="index" operand1="${index}" operation="+" operand2="1" datatype="int" />
     			<!--echo>Param @{service-info}</echo-->
 			</sequential>
